@@ -1,3 +1,100 @@
-#heading {
-  color: red;
+/* Global Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+h1 {
+  font-size: 2.7rem;
+  color: white;
+}
+
+li,
+button,
+label,
+input,
+p {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+h4,
+h5 {
+  font-size: 1rem;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+/* navbar */
+
+.header {
+  display: flex;
+  background-color: blue;
+  min-height: 10vh;
+  width: 90%;
+  margin: auto;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#logo {
+  flex: 2 1 40rem;
+}
+
+.header-right {
+  background-color: green;
+  width: 50%;
+}
+.header-right ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.Body {
+  background-color: red;
+  /* height: 80vh; */
+}
+/* restaurantCard */
+.res-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.restaurant-card {
+  border: 2px dotted;
+  margin: 2rem;
+  width: 30rem;
+  height: auto;
+}
+.restaurant-card > h3,
+h4,
+h5 {
+  padding: 0.5rem 0rem;
+}
+.restaurant-card img {
+  width: 27rem;
+}
+.restaurant-card :hover {
+  cursor: pointer;
+  border: 1px solid black;
+}
+.search {
+  padding: 1rem;
 }
