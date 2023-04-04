@@ -1,5 +1,6 @@
 const resList = [
   {
+    type: "restaurant",
     data: {
       type: "F",
       id: "243641",
