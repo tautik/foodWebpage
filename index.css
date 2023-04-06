@@ -98,3 +98,12 @@ h5 {
 .search {
   padding: 1rem;
 }
+
+/* shimmer ui */
+
+.shimmer-card {
+  border: 2px dotted;
+  margin: 2rem;
+  width: 30rem;
+  height: 25rem;
+}
