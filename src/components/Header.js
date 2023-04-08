@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <div className="header">
@@ -6,17 +8,18 @@ const Header = () => {
       </div>
       <div className="header-right">
         <ul>
+          {/* //here Link instead of anchor tag, Link indicates */}
           <li>
-            <a href="#Home">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="#About">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <a href="#projects">Cart</a>
+            <Link to="/cart">Cart</Link>
           </li>
           <li>
-            <a href="#projects">Login</a>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
       </div>
