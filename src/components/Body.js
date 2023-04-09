@@ -5,6 +5,8 @@ import Shimmer from "./Shimmer";
 import resList from "../utils/mockData";
 import { Link } from "react-router-dom";
 
+import useRestaurants from "../hooks/useRestaurants";
+
 const filterRestaurant = (searchText, allRestaurants) => {
   const filterData = allRestaurants.filter((restaurant) => {
     //making search work for any case
@@ -17,31 +19,21 @@ const filterRestaurant = (searchText, allRestaurants) => {
 
 const Body = () => {
   const [filteredRestaurantList, setFilteredRestaurantList] = useState(resList);
-  const [allRestaurants, setAllRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+  //getting restaurant data from custom hook
+  const allRestaurants = useRestaurants();
+
+  //after allRestaurant updats initialize filteredRestaurantList with new data
+  //it happens only once
   useEffect(() => {
-    //making api call to fetch restaurant details
-    getRestaurants();
-  }, []);
+    setFilteredRestaurantList(allRestaurants);
+  }, [allRestaurants]);
 
-  async function getRestaurants() {
-    const fetchedData = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.111633&lng=72.593405&page_type=DESKTOP_WEB_LISTING"
-    );
-    json = await fetchedData.json();
-    setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    console.log(json.data.cards[0].data.data.cards);
-    setFilteredRestaurantList(json.data.cards[2].data.data.cards);
-  }
-
-  //added Return Early Pattern
   if (!allRestaurants) return null;
 
-  //if filteredRestaurant dosent match then do this
   if (filteredRestaurantList?.length === 0)
     return <h2>No Restraunt match your Filter!!</h2>;
-  // return <h2>KJHSD</h2>;
 
   return allRestaurants.length === 0 ? (
     <Shimmer />

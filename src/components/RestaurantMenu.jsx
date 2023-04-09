@@ -3,28 +3,11 @@ import { useParams } from "react-router-dom";
 import { imagePrefix } from "../utils/constants";
 
 import Shimmer from "./Shimmer";
+import useRestaurantData from "../hooks/useRestaurantData";
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  const [restaurantData, setRestaurantData] = useState(null);
-  const [menuList, setMenuList] = useState(null);
 
-  useEffect(() => {
-    getRestaurantData();
-  }, []);
-
-  async function getRestaurantData() {
-    const fetchedData = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=23.111633&lng=72.593405&restaurantId=" +
-        resId +
-        "&submitAction=ENTER"
-    );
-    const json = await fetchedData.json();
-
-    setRestaurantData(json.data.cards[0].card.card.info);
-    setMenuList(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards);
-    console.log(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards);
-    // console.log(restaurantData);
-  }
+  const restaurantData = useRestaurantData(resId);
 
   return !restaurantData ? (
     <Shimmer />
@@ -48,6 +31,7 @@ const RestaurantMenu = () => {
           <li key={item.id}>{item.name}</li>
         ))} 
           MAKE THIS CARD
+          MIGHT NEED TO make New STATE
         */}
       </div>
     </div>

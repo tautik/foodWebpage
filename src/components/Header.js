@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-
+import useOnline from "../hooks/useOnline";
 const Header = () => {
+  const isOnline = useOnline();
   return (
     <div className="header">
       <div id="Logo">
@@ -20,6 +21,9 @@ const Header = () => {
           </li>
           <li>
             <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <h2>{isOnline ? "✅ Online" : "❌ Disconnected"}</h2>
           </li>
         </ul>
       </div>
